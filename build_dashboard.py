@@ -1,5 +1,5 @@
 """
-Bake results.json into a single self-contained dashboard.html.
+Bake results.json into a single self-contained index.html.
 
 The page loads d3 from cdnjs and carries all data inline, so it opens straight
 from disk (file://) or from GitHub Pages without a server.
@@ -49,8 +49,8 @@ def main():
     data = json.dumps(flatten(R), separators=(",", ":")).replace("</", "<\\/")
     tpl = (HERE / "dashboard" / "template.html").read_text()
     out = tpl.replace("/*__DATA__*/{}", data)
-    (HERE / "dashboard.html").write_text(out)
-    print(f"dashboard.html: {len(out) / 1024:.0f} KB")
+    (HERE / "index.html").write_text(out)
+    print(f"index.html: {len(out) / 1024:.0f} KB")
 
 
 if __name__ == "__main__":

@@ -2,7 +2,7 @@
 
 Backtests of monthly investing strategies on **Nifty 50**, **Nifty Next 50** and **Nifty Midcap 150**, using daily data from NSE Indices.
 
-Open [`dashboard.html`](dashboard.html) in a browser to explore the results. It is a single static file with the data embedded, so it works straight from disk.
+Open [`index.html`](index.html) in a browser to explore the results. It is a single static file with the data embedded, so it works straight from disk or on GitHub Pages (Settings → Pages → deploy from the `main` branch, root folder).
 
 ## Strategies tested
 
@@ -24,7 +24,7 @@ python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 python fetch_data.py       # refresh data/ from niftyindices.com (optional; data is committed)
 python backtest.py         # writes results.json and prints a summary
-python build_dashboard.py  # bakes results.json into dashboard.html
+python build_dashboard.py  # bakes results.json into index.html
 ```
 
 Settings such as the SIP amount, FD rate and tax rates are constants at the top of `backtest.py`.
@@ -44,9 +44,9 @@ Settings such as the SIP amount, FD rate and tax rates are constants at the top 
 data/                  NSE daily data, one CSV per index (date, close, tri)
 fetch_data.py          downloads data/
 backtest.py            strategy engine, writes results.json
-build_dashboard.py     results.json + dashboard/template.html -> dashboard.html
+build_dashboard.py     results.json + dashboard/template.html -> index.html
 dashboard/template.html
-dashboard.html         generated, committed so it can be opened directly
+index.html             generated dashboard, committed so it works on GitHub Pages
 ```
 
 ## Adding a strategy
